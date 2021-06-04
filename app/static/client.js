@@ -30,7 +30,14 @@ function analyze() {
   xhr.onreadystatechange = function(e) {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
       var response = JSON.parse(e.target.responseText);
-      el("result-label").innerHTML = `Result = ${response["result"]}`;
+      var result = response['result']
+      let show 
+      if (result === 'Unhealthy') {
+        show = `${result} 🏥`
+      } else if (result === 'Healthy') {
+        show = `${result} 💪`
+      }
+      el("result-label").innerHTML = `${show}`;
     }
     el("analyze-button").innerHTML = "Analyze";
   };
@@ -39,4 +46,3 @@ function analyze() {
   fileData.append("file", uploadFiles[0]);
   xhr.send(fileData);
 }
-
