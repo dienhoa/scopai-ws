@@ -1,0 +1,17 @@
+aiofiles
+aiohttp
+asyncio
+requests
+pyyaml
+starlette
+librosa
+uvicorn
+gdown
+pip
+torch==1.8.1+cpu
+torchvision==0.9.1+cpu
+torchaudio==0.8.1
+--find-links https://download.pytorch.org/whl/torch_stable.html
+fastai
+python-multipart
+

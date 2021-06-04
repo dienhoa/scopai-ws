@@ -1,0 +1,61 @@
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <link rel='stylesheet' href='../static/style.css'>
+  <script src='../static/client.js'></script>
+</head>
+
+<body>
+  <div class="center">
+    <h3 class="title"> Lung Sound Classifier 🩺 </h3>
+
+    <p class="instruction">
+      Upload your audio file from digital stretroscope 
+    </p>
+
+
+    <p class="note">
+      Samples can be found at <a href="https://www.kaggle.com/vbookshelf/respiratory-sound-database" > Kaggle </a>
+    </p>
+    <p class="note">
+      or here: <a href="https://drive.google.com/uc?export=download&id=1kfVS6a8U37mcRAPZh7D-WGdelvUJ9Pb7">Healthy</a>
+      &emsp; <a href="https://drive.google.com/uc?export=download&id=1KpKED_KhJ4yyT4WHAqiEhOSSFN0lLD8K"> Unhealthy</a>
+    </p>
+
+    <input
+      class="no-display"
+      type="file" 
+      id="input-audio"
+      name="input-audio"
+      accept="audio/*"
+      onchange="loadAudio(event)"
+      style="display: none;"
+    >
+
+
+    <p style="margin: 3em;">
+      <label 
+        for="input-audio" 
+        class="upload-label"
+      >
+          Upload Audio 
+      </label>
+    </p>
+
+    <audio class="no-display" height="200" controls id="audio-picked"></audio> 
+
+    <p id="upload-label"> </p>
+
+    <button 
+      class="no-display" 
+      id="analyze-button" 
+      type="button"
+      onclick="analyze()"
+    > 
+      Analyze 
+    </button>
+    <p id="result-label">  </p>
+
+  </div>
+</body>
+</html>
