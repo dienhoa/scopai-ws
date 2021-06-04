@@ -1,13 +1,12 @@
-# Starter for deploying Lung_Sound
+# Introduction
 
-This repo can be used as a starting point to deploy [fast.ai](https://github.com/fastai/fastai) models with Starlette.
+- Lung Sound Analyzer (Healthy/Unhealthy) for audio recorded from digital Stretroscope
 
-See the Deployment notebook for hints
+# How to run
 
-To run locally:
-`python3 app/server.py`
+- Install the dependencies from requirements.txt then run: `python app/server.py`
 
-# Docker related
+# Docker build and run
 
 - Build Image
 ```
@@ -20,4 +19,9 @@ Locally:
 ```
     docker run -p 5000:5000 lung_sound
 ```
-Or you can pull from docker-hub and run the prebuilt image
+
+# Dependencies
+
+This project is based on:
+- fast.ai for deep learning model training and inference
+- Starlette for creating WebService
