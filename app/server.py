@@ -88,19 +88,34 @@ async def homepage(request):
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
-    start_time = time.time()
+    start_time_main = time.time()
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
+    end_time_read = time.time()
+    print(f'time read: {end_time_read-start_time_main}')
+
     name = f'./{time.time()}.wav'
     audio_path = path/audio_folder/name
+
+    start_time_write = time.time()
+    
     async with aiofiles.open(audio_path, mode='bx') as f:
         await f.write(img_bytes)
+    end_time_write = time.time()
+    print(f'time write: {end_time_write-start_time_write}')
+
+    start_time_get_x = time.time()
     img_np = get_x(audio_path)
+    end_time_get_x = time.time()
+    print(f'time get_x: {end_time_get_x-start_time_get_x}')
     print(name)
+    start_time_pred = time.time()
     pred = learn.predict(img_np)
+    end_time_pred = time.time()
+    print(f'time pred: {end_time_pred-start_time_pred}')
     print(pred)
-    end_time = time.time()
-    print(f'time: {end_time-start_time}')
+    end_time_main = time.time()
+    print(f'time main: {end_time_main-start_time_main}')
     return JSONResponse({
         'result': str(pred[0])
     })
