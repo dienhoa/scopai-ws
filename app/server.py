@@ -88,6 +88,7 @@ async def homepage(request):
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
+    start_time = time.time()
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
     name = f'./{time.time()}.wav'
@@ -98,6 +99,8 @@ async def analyze(request):
     print(name)
     pred = learn.predict(img_np)
     print(pred)
+    end_time = time.time()
+    print(f'time: {end_time-start_time}')
     return JSONResponse({
         'result': str(pred[0])
     })
